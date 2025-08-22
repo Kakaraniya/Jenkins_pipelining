@@ -1,52 +1,20 @@
 pipeline {
     agent any
-
     stages {
-        stage('Print Message') {
+        stage('Compile') {
             steps {
-                echo '🚀 Jenkins Pipeline Started!'
-                echo "Hello Iqra 👋"
+                sh 'echo Compiling the project'
             }
         }
-
-        stage('List Files') {
+        stage('Test') {
             steps {
-                sh 'ls -l'   // lists files in your repo
+                sh 'echo Running tests'
             }
         }
-
-        stage('Run a Script') {
-            steps {
-                sh 'echo "This is where you can run shell commands or scripts"'
-            }
-        }
-
-        stage('Simulate Build') {
-            steps {
-                echo '🔨 Compiling code (simulation)...'
-                sh 'sleep 2'  // wait for 2 seconds to simulate build
-                echo '✅ Build Completed'
-            }
-        }
-
-        stage('Simulate Test') {
-            steps {
-                echo '🧪 Running Tests...'
-                sh 'echo "All tests passed!"'
-            }
-        }
-
         stage('Deploy') {
             steps {
-                echo '🚢 Deploying Application...'
-                sh 'echo "Application deployed successfully!"'
+                sh 'echo Deploying application'
             }
-        }
-    }
-
-    post {
-        always {
-            echo '📌 Pipeline Finished!'
         }
     }
 }
